@@ -15,9 +15,13 @@ First, include fansi in your script:
 
 > `from fansi import fansi`
 
-Then, instead of `print()` statements, use `fansi.say()`
+Then, instead of `print()` statements, use `fansi.say()`.
 
 > `fansi.say("This string can have fansi formatting!")`
+
+If you want to generate a formatted string without printing it, use `fansi.format()`.
+
+> `a = fansi.format("Here's a string ::blue:: formatted with Ansi characters! ::end:: It's partly blue!")`
 
 ## Basic formatting
 
