@@ -1,7 +1,7 @@
 # Fansi
 Fansi is a Python library that makes formatting, colouring and adding emojis to terminal printouts easy.
 
-[![fansi demo](https://i.postimg.cc/zGcL6MhG/Screenshot-2018-10-26-at-13-40-19.png)]
+![fansi demo](https://i.postimg.cc/zGcL6MhG/Screenshot-2018-10-26-at-13-40-19.png)
 
 # Installation
 
