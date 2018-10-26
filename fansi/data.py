@@ -1,6 +1,6 @@
 # data.py
 import json
-
+from os import path
 
 class AnsiCodes:
     """
@@ -58,7 +58,8 @@ class EmojiCodes:
     """
     Every Unicode emoji code.
     """
-    with open("data/emojis.json", "r") as data:
+    emojipath = path.join(path.dirname(__file__), 'emojis.json')
+    with open(emojipath, "r") as data:
         emojis = json.load(data)
 
     @classmethod
@@ -70,13 +71,10 @@ class EmojiCodes:
             if emoji["shortname"][1:-1] == code:
                 return emoji["emoji"]
 
-        print(f"Couldn't find {code} in shortnames.")
-
         for emoji in cls.emojis['emojis']:
             if emoji["name"] == code:
                 return emoji["emoji"]
 
-        print(f"Couldn't find {code} in full names.")
         return("")
 
 

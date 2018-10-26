@@ -1,7 +1,9 @@
 [tool.poetry]
 name = "fansi"
 version = "0.1.0"
-description = ""
+description = "A Python library that makes formatting terminal printouts easy."
+readme = "README.md"
+homepage = "https://github.com/drivasperez/fansi/"
 authors = ["Daniel Rivas Perez <drivas12@googlemail.com>"]
 
 [tool.poetry.dependencies]

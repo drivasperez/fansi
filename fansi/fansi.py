@@ -5,8 +5,9 @@ and emojis to your terminal printouts.
 
 By Daniel Rivas, 2018.
 """
+
 import re
-from data.data import AnsiCodes, EmojiCodes
+from .data import AnsiCodes, EmojiCodes
 
 
 def parse_emphasis(str, resetcode=AnsiCodes.reset()):
