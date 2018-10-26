@@ -7,6 +7,7 @@ By Daniel Rivas, 2018.
 """
 
 import re
+from colorama import init, deinit
 from .data import AnsiCodes, EmojiCodes
 
 
@@ -67,6 +68,7 @@ def parse_emojis(str):
 
 
 def say(str, codes=None):
+    init()
     if codes is not None:
         reset = AnsiCodes.form_code(codes)
         str = parse_emphasis(str, reset)
@@ -80,6 +82,8 @@ def say(str, codes=None):
     str = AnsiCodes.reset() + str + AnsiCodes.reset()
 
     print(str)
+
+    deinit()
 
 
 # --- Premade formats ---

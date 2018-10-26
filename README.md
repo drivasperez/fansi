@@ -1,7 +1,7 @@
 # Fansi
 Fansi is a Python library that makes formatting, colouring and adding emojis to terminal printouts easy.
 
-[![fansi demo](https://i.postimg.cc/zGcL6MhG/Screenshot-2018-10-26-at-13-40-19.png)](https://postimg.cc/mP72FmVv)
+![fansi demo](https://i.postimg.cc/zGcL6MhG/Screenshot-2018-10-26-at-13-40-19.png)
 
 # Installation
 
@@ -47,3 +47,31 @@ For example:
 > `fansi.say("Here are some :poop: emojis! :panda_face::tiger::cat:")`'
 
 That's it!
+
+# Appendix: Fansi tags
+
+| Tag          | Description           |
+|--------------|-----------------------|
+| `bold`       | Bold text             |
+| `italics`    | Italicised text       |
+| `underline`  | Underlined text       |
+| `blink`      | Blinking text (don't) |
+| `invisible`  | Invisible text        |
+|--------------|-----------------------|
+| `black`      | Black text            |
+| `red`        | Red text              |
+| `green`      | Green text            |
+| `yellow`     | Yellow text           |
+| `blue`       | Blue text             |
+| `magenta`    | Magenta text          |
+| `cyan`       | Cyan text             |
+| `white`      | White text            |
+|--------------|-----------------------|
+| `bg-black`   | Black background      |
+| `bg-red`     | Red background        |
+| `bg-green`   | Green background      |
+| `bg-yellow`  | Yellow background     |
+| `bg-blue`    | Blue background       |
+| `bg-magenta` | Magenta background    |
+| `bg-cyan`    | Cyan background       |
+| `bg-white`   | White background      |
