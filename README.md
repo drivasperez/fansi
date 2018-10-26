@@ -1,2 +1,2 @@
-# fansi
-A python library that makes formatting terminal printouts easy.
+# Fansi
+Fansi is a python library that makes formatting terminal printouts easy.
