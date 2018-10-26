@@ -52,7 +52,7 @@ That's it!
 
 | Tag          | Description           |
 |--------------|-----------------------|
-| `bold`       | bold text             |
+| `bold`       | Bold text             |
 | `italics`    | Italicised text       |
 | `underline`  | Underlined text       |
 | `blink`      | Blinking text (don't) |
