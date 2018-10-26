@@ -19,7 +19,7 @@ Then, instead of `print()` statements, use `fansi.say()`
 
 ## Basic formatting
 
-To add italics, use `_tags_` or `*tags*`. To add bolding, use `__tags__` or `**tags**`. To add bolding and italics, use `___tags___` or .
+To add italics, use `_tags_` or `*tags*`. To add bolding, use `__tags__` or `**tags**`. To add bolding and italics, use `___tags___` or `***tags***`.
 
 For example:
 > `fansi.say("This _text will be italicised. __This text will be **bolded**. ___This text will be both___")`
