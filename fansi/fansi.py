@@ -67,8 +67,7 @@ def parse_emojis(str):
     return str
 
 
-def say(str, codes=None):
-    init()
+def format(str, codes=None):
     if codes is not None:
         reset = AnsiCodes.form_code(codes)
         str = parse_emphasis(str, reset)
@@ -81,8 +80,13 @@ def say(str, codes=None):
     str = parse_emojis(str)
     str = AnsiCodes.reset() + str + AnsiCodes.reset()
 
-    print(str)
+    return str
 
+
+def say(str, codes=None):
+    init()
+    str = format(str, codes)
+    print(str)
     deinit()
 
 
