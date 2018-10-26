@@ -47,3 +47,31 @@ For example:
 > `fansi.say("Here are some :poop: emojis! :panda_face::tiger::cat:")`'
 
 That's it!
+
+# Appendix: Fansi tags
+
+| Tag          | Description           |
+|--------------|-----------------------|
+| `bold`       | bold text             |
+| `italics`    | Italicised text       |
+| `underline`  | Underlined text       |
+| `blink`      | Blinking text (don't) |
+| `invisible`  | Invisible text        |
+|--------------|-----------------------|
+| `black`      | Black text            |
+| `red`        | Red text              |
+| `green`      | Green text            |
+| `yellow`     | Yellow text           |
+| `blue`       | Blue text             |
+| `magenta`    | Magenta text          |
+| `cyan`       | Cyan text             |
+| `white`      | White text            |
+|--------------|-----------------------|
+| `bg-black`   | Black background      |
+| `bg-red`     | Red background        |
+| `bg-green`   | Green background      |
+| `bg-yellow`  | Yellow background     |
+| `bg-blue`    | Blue background       |
+| `bg-magenta` | Magenta background    |
+| `bg-cyan`    | Cyan background       |
+| `bg-white`   | White background      |
