@@ -74,10 +74,11 @@ def format(body, codes=None):
         body = parse_emojis(body)
         body = AnsiCodes.form_code(codes) + body + AnsiCodes.reset()
 
-    body = parse_emphasis(body)
-    body = parse_inline_styles(body)
-    body = parse_emojis(body)
-    body = AnsiCodes.reset() + body + AnsiCodes.reset()
+    else:
+        body = parse_emphasis(body)
+        body = parse_inline_styles(body)
+        body = parse_emojis(body)
+        body = AnsiCodes.reset() + body + AnsiCodes.reset()
 
     return body
 
