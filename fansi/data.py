@@ -59,7 +59,8 @@ class EmojiCodes:
     """
     Every Unicode emoji code.
     """
-    emojipath = path.join(path.dirname(__file__), 'emojis.json')
+
+    emojipath = path.join(path.dirname(__file__), "emojis.json")
     with open(emojipath, "r") as data:
         emojis = json.load(data)
 
@@ -68,12 +69,12 @@ class EmojiCodes:
         # shortcode is ':shortcode:', our code is 'code', so add colons.
         code = ":" + code + ":"
 
-        for emoji in cls.emojis['emojis']:
+        for emoji in cls.emojis["emojis"]:
             if emoji["shortname"] == code:
                 return emoji["emoji"]
 
-        for emoji in cls.emojis['emojis']:
+        for emoji in cls.emojis["emojis"]:
             if emoji["name"] == code:
                 return emoji["emoji"]
 
-        return("")
+        return ""

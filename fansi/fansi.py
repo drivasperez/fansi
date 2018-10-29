@@ -18,22 +18,22 @@ def parse_emphasis(body, resetcode=AnsiCodes.reset()):
     Bold and italic with ___tags___ or ***tags***
     """
 
-    strong_emphasis = re.compile(
-        r"(?<!\w)(_{3}|\*{3})(?!_)(.+?)(?<!_)\1(?!\w)")
+    strong_emphasis = re.compile(r"(?<!\w)(_{3}|\*{3})(?!_)(.+?)(?<!_)\1(?!\w)")
     body = strong_emphasis.sub(
-        AnsiCodes.form_code("bold italics") + r"\2" + AnsiCodes.reset() +
-        resetcode, body)
+        AnsiCodes.form_code("bold italics") + r"\2" + AnsiCodes.reset() + resetcode,
+        body,
+    )
 
     strong = re.compile(r"(?<!\w)(_{2}|\*{2})(?!_)(.+?)(?<!_)\1(?!\w)")
     body = strong.sub(
-        AnsiCodes.form_code("bold") + r"\2" + AnsiCodes.reset() + resetcode,
-        body)
+        AnsiCodes.form_code("bold") + r"\2" + AnsiCodes.reset() + resetcode, body
+    )
 
     emphasis = re.compile(r"(?<!\w)(_{1}|\*{1})(?!_)(.+?)(?<!_)\1(?!\w)")
 
     body = emphasis.sub(
-        AnsiCodes.form_code("italics") + r"\2" + AnsiCodes.reset() + resetcode,
-        body)
+        AnsiCodes.form_code("italics") + r"\2" + AnsiCodes.reset() + resetcode, body
+    )
 
     return body
 
@@ -44,8 +44,7 @@ def parse_inline_styles(body, resetcode=AnsiCodes.reset()):
     """
 
     tag_re = re.compile(r" (?<!\w)(:{2})(?!:)(.+?)(?<!:)\1(?!\w)")
-    body = tag_re.sub(lambda match: check_for_end(match.group(2), resetcode),
-                      body)
+    body = tag_re.sub(lambda match: check_for_end(match.group(2), resetcode), body)
 
     return body
 
