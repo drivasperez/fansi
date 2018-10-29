@@ -2,6 +2,7 @@
 import json
 from os import path
 
+
 class AnsiCodes:
     """
     Every Ansi Code for formatting text.
@@ -64,11 +65,11 @@ class EmojiCodes:
 
     @classmethod
     def get_emoji(cls, code):
+        # shortcode is ':shortcode:', our code is 'code', so add colons.
+        code = ":" + code + ":"
 
         for emoji in cls.emojis['emojis']:
-            # shortcode is ':shortcode:', our code is 'code', so take off
-            # first and last chars.
-            if emoji["shortname"][1:-1] == code:
+            if emoji["shortname"] == code:
                 return emoji["emoji"]
 
         for emoji in cls.emojis['emojis']:
@@ -76,5 +77,3 @@ class EmojiCodes:
                 return emoji["emoji"]
 
         return("")
-
-
