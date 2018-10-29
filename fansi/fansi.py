@@ -11,90 +11,89 @@ from colorama import init, deinit
 from .data import AnsiCodes, EmojiCodes
 
 
-def parse_emphasis(str, resetcode=AnsiCodes.reset()):
+def parse_emphasis(body, resetcode=AnsiCodes.reset()):
     """
     Italics with _tags_ or *tags*.
     Bold with __tags__ or **tags**.
     Bold and italic with ___tags___ or ***tags***
     """
 
-    strong_emphasis = re.compile(
-        r"(?<!\w)(_{3}|\*{3})(?!_)(.+?)(?<!_)\1(?!\w)")
-    str = strong_emphasis.sub(
-        AnsiCodes.form_code("bold italics") + r"\2" + AnsiCodes.reset() +
-        resetcode, str)
+    strong_emphasis = re.compile(r"(?<!\w)(_{3}|\*{3})(?!_)(.+?)(?<!_)\1(?!\w)")
+    body = strong_emphasis.sub(
+        AnsiCodes.form_code("bold italics") + r"\2" + AnsiCodes.reset() + resetcode,
+        body,
+    )
 
     strong = re.compile(r"(?<!\w)(_{2}|\*{2})(?!_)(.+?)(?<!_)\1(?!\w)")
-    str = strong.sub(
-        AnsiCodes.form_code("bold") + r"\2" + AnsiCodes.reset() + resetcode,
-        str)
+    body = strong.sub(
+        AnsiCodes.form_code("bold") + r"\2" + AnsiCodes.reset() + resetcode, body
+    )
 
     emphasis = re.compile(r"(?<!\w)(_{1}|\*{1})(?!_)(.+?)(?<!_)\1(?!\w)")
 
-    str = emphasis.sub(
-        AnsiCodes.form_code("italics") + r"\2" + AnsiCodes.reset() + resetcode,
-        str)
+    body = emphasis.sub(
+        AnsiCodes.form_code("italics") + r"\2" + AnsiCodes.reset() + resetcode, body
+    )
 
-    return str
+    return body
 
 
-def parse_inline_styles(str, resetcode=AnsiCodes.reset()):
+def parse_inline_styles(body, resetcode=AnsiCodes.reset()):
     """
     ::red bg-blue bold::This text is affected::reset::This code is not.
     """
 
     tag_re = re.compile(r" (?<!\w)(:{2})(?!:)(.+?)(?<!:)\1(?!\w)")
-    str = tag_re.sub(lambda match: check_for_end(match.group(2), resetcode),
-                     str)
+    body = tag_re.sub(lambda match: check_for_end(match.group(2), resetcode), body)
 
-    return str
+    return body
 
 
-def check_for_end(str, resetcode):
-    if str == "end":
+def check_for_end(body, resetcode):
+    if body == "end":
         return AnsiCodes.reset() + resetcode
     else:
-        return AnsiCodes.form_code(str)
+        return AnsiCodes.form_code(body)
 
 
-def parse_emojis(str):
+def parse_emojis(body):
     """
-    TODO: Parse emojis in the text.
-    TODO: Syntax :emoji:
+    Parse emojis in the text.
+    Syntax :poo: :lion: :multiple::emojis::together:
     """
     emoji_re = re.compile(r"(?<!\w)(:{1})(?!:)(.+?)(?<!:)\1(?!\w)")
-    str = emoji_re.sub(lambda match: EmojiCodes.get_emoji(match.group(2)), str)
-    return str
+    body = emoji_re.sub(lambda match: EmojiCodes.get_emoji(match.group(2)), body)
+    return body
 
 
-def format(str, codes=None):
+def format(body, codes=None):
     if codes is not None:
         reset = AnsiCodes.form_code(codes)
-        str = parse_emphasis(str, reset)
-        str = parse_inline_styles(str, reset)
-        str = parse_emojis(str)
-        str = AnsiCodes.form_code(codes) + str + AnsiCodes.reset()
+        body = parse_emphasis(body, reset)
+        body = parse_inline_styles(body, reset)
+        body = parse_emojis(body)
+        body = AnsiCodes.form_code(codes) + body + AnsiCodes.reset()
 
-    str = parse_emphasis(str)
-    str = parse_inline_styles(str)
-    str = parse_emojis(str)
-    str = AnsiCodes.reset() + str + AnsiCodes.reset()
+    body = parse_emphasis(body)
+    body = parse_inline_styles(body)
+    body = parse_emojis(body)
+    body = AnsiCodes.reset() + body + AnsiCodes.reset()
 
-    return str
+    return body
 
 
-def say(str, codes=None):
+def say(body, codes=None):
     init()
-    str = format(str, codes)
-    print(str)
+    body = format(body, codes)
+    print(body)
     deinit()
 
 
 # --- Premade formats ---
 
 
-def danger(str, emoji=True):
+def danger(body, emoji=True):
     """
     For urgent messages, e.g. error printouts.
     """
-    say(str, "bold red")
+    say(body, "bold red")

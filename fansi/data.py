@@ -2,6 +2,7 @@
 import json
 from os import path
 
+
 class AnsiCodes:
     """
     Every Ansi Code for formatting text.
@@ -58,23 +59,22 @@ class EmojiCodes:
     """
     Every Unicode emoji code.
     """
-    emojipath = path.join(path.dirname(__file__), 'emojis.json')
+
+    emojipath = path.join(path.dirname(__file__), "emojis.json")
     with open(emojipath, "r") as data:
         emojis = json.load(data)
 
     @classmethod
     def get_emoji(cls, code):
+        # shortcode is ':shortcode:', our code is 'code', so add colons.
+        code = ":" + code + ":"
 
-        for emoji in cls.emojis['emojis']:
-            # shortcode is ':shortcode:', our code is 'code', so take off
-            # first and last chars.
-            if emoji["shortname"][1:-1] == code:
+        for emoji in cls.emojis["emojis"]:
+            if emoji["shortname"] == code:
                 return emoji["emoji"]
 
-        for emoji in cls.emojis['emojis']:
+        for emoji in cls.emojis["emojis"]:
             if emoji["name"] == code:
                 return emoji["emoji"]
 
-        return("")
-
-
+        return ""
