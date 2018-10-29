@@ -59,8 +59,8 @@ def check_for_end(str, resetcode):
 
 def parse_emojis(str):
     """
-    TODO: Parse emojis in the text.
-    TODO: Syntax :emoji:
+    Parse emojis in the text.
+    Syntax :poo: :lion: :multiple::emojis::together:
     """
     emoji_re = re.compile(r"(?<!\w)(:{1})(?!:)(.+?)(?<!:)\1(?!\w)")
     str = emoji_re.sub(lambda match: EmojiCodes.get_emoji(match.group(2)), str)
