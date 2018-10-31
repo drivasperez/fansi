@@ -61,7 +61,7 @@ class EmojiCodes:
     """
 
     emojipath = path.join(path.dirname(__file__), "emojis.json")
-    with open(emojipath, "r") as data:
+    with open(emojipath, "r", encoding="utf-8") as data:
         emojis = json.load(data)
 
     @classmethod
