@@ -70,11 +70,7 @@ class EmojiCodes:
         code = ":" + code + ":"
 
         for emoji in cls.emojis["emojis"]:
-            if emoji["shortname"] == code:
-                return emoji["emoji"]
-
-        for emoji in cls.emojis["emojis"]:
-            if emoji["name"] == code:
+            if emoji["shortname"] == code or emoji["name"] == code:
                 return emoji["emoji"]
 
         return ""
