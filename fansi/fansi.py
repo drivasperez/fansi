@@ -40,11 +40,11 @@ def parse_emphasis(body, resetcode=AnsiCodes.reset()):
 
 def parse_inline_styles(body, resetcode=AnsiCodes.reset()):
     """
-    ::red bg-blue bold::This text is affected::reset::This code is not.
+    ::red bg-blue bold:: This text is affected ::end:: This code is not.
     """
 
-    tag_re = re.compile(r" (?<!\w)(:{2})(?!:)(.+?)(?<!:)\1(?!\w)")
-    body = tag_re.sub(lambda match: check_for_end(match.group(2), resetcode), body)
+    tag_re = re.compile(r"(^| )(?<!\w)(:{2})(?!:)(.+?)(?<!:)\2(?!\w)")
+    body = tag_re.sub(lambda match: check_for_end(match.group(3), resetcode), body)
 
     return body
 
